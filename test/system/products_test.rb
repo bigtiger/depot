@@ -1,8 +1,10 @@
 require "application_system_test_case"
 
 class ProductsTest < ApplicationSystemTestCase
+  fixtures :products
   setup do
     @product = products(:one)
+    @title = "The Great Book #{rand(1000)}"
   end
 
   test "visiting the index" do
@@ -14,9 +16,10 @@ class ProductsTest < ApplicationSystemTestCase
     visit products_url
     click_on "New product"
 
-    fill_in "Title", with: @product.title
+    fill_in "Title", with: @title
     fill_in "Description", with: @product.description
     fill_in "Price", with: @product.price
+    attach_file "Image", Rails.root.join("test/fixtures/files/lorem.jpg")
     click_on "Create Product"
 
     assert_text "Product was successfully created"
@@ -27,7 +30,7 @@ class ProductsTest < ApplicationSystemTestCase
     visit product_url(@product)
     click_on "Edit this product", match: :first
 
-    fill_in "Title", with: @product.title
+    fill_in "Title", with: @title
     fill_in "Description", with: @product.description
     fill_in "Price", with: @product.price
     click_on "Update Product"
