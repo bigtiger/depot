@@ -24,16 +24,19 @@ class LineItemsController < ApplicationController
   # POST /line_items or /line_items.json
   def create
     product = Product.find(params[:product_id])
-
     @line_item = @cart.line_items.build(product: product)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: "Line item was successfully created." }
-        format.json { render :show, status: :created, location: @line_item }
+        format.html { redirect_to @line_item.cart,
+          notice: "Line item was successfully created." }
+        format.json { render :show,
+          status: :created, location: @line_item }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        format.html { render :new,
+          status: :unprocessable_entity }
+        format.json { render json: @line_item.errors,
+          status: :unprocessable_entity }
       end
     end
   end
@@ -71,4 +74,5 @@ class LineItemsController < ApplicationController
     def line_item_params
       params.expect(line_item: [ :product_id, :cart_id ])
     end
+  #...
 end
