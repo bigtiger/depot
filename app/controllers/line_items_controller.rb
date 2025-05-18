@@ -73,5 +73,4 @@ class LineItemsController < ApplicationController
     def line_item_params
       params.expect(line_item: [ :product_id ])
     end
-  # ...
 end

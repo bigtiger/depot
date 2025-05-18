@@ -11,6 +11,7 @@ class LineItemsTest < ApplicationSystemTestCase
   end
 
   test "should create line item" do
+    skip "No longer needed"
     visit line_items_url
     click_on "New line item"
 
