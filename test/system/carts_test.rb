@@ -34,6 +34,6 @@ class CartsTest < ApplicationSystemTestCase
     visit cart_url(@cart)
     accept_confirm { click_on "Destroy this cart", match: :first }
 
-    assert_text "Cart was successfully destroyed"
+    assert_text "Your cart is currently empty"
   end
 end
