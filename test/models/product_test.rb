@@ -57,7 +57,7 @@ class ProductTest < ActiveSupport::TestCase
   end
 
   test "product is not valid without a unique title" do
-    product = Product.new(title:       products(:pragprog).title,
+    product = Product.new(title: products(:pragprog).title,
                           description: "yyy",
                           price:       1)
     product.image.attach(io: File.open("test/fixtures/files/lorem.jpg"),
